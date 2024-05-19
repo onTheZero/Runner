@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StartButton : MonoBehaviour
 {
-    // TESTING GIT
+    // TESTING GIT CHANGES
     [SerializeField] private GameController gameController;
 
     public void OnButtonClick()
