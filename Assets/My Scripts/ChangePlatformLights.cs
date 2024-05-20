@@ -8,6 +8,15 @@ public class ChangePlatformLights : MonoBehaviour
     [SerializeField] private Material[] materials;
     [SerializeField] private GameController gameController;
 
+
+    [SerializeField] private AudioClip[] audioClips;
+    private AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     public void ChangeToGreen()
     {
         bool changedLight = false;
@@ -24,6 +33,8 @@ public class ChangePlatformLights : MonoBehaviour
 
         if (changedLight)
         {
+            audioSource.pitch = Random.Range(0.95f, 1.05f);
+            audioSource.PlayOneShot(audioClips[0]);
             gameController.UpdateScore();
         }
     }
@@ -37,5 +48,10 @@ public class ChangePlatformLights : MonoBehaviour
             mesh.materials = mats;
         }
 
+        if (audioSource != null)
+        {
+            audioSource.pitch = Random.Range(0.95f, 1.05f);
+            audioSource.PlayOneShot(audioClips[1]);
+        }
     }
 }
