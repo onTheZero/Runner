@@ -22,7 +22,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        scoreTMP.gameObject.SetActive(false);
+        scoreTMP.transform.parent.gameObject.SetActive(false);
         PauseGame();
     }
 
@@ -31,7 +31,7 @@ public class GameController : MonoBehaviour
     {
         if (playerObject.position.y < killFloor)
         {
-            scoreTMP.gameObject.SetActive(true);
+            scoreTMP.transform.parent.gameObject.SetActive(true);
             startButton.SetActive(false);
             pauseButton.SetActive(false);
             restartButton.SetActive(true);
@@ -46,7 +46,7 @@ public class GameController : MonoBehaviour
 
     public void StartGame()
     {
-        scoreTMP.gameObject.SetActive(true);
+        scoreTMP.transform.parent.gameObject.SetActive(true);
         startButton.SetActive(false);
         pauseButton.SetActive(true);
         restartButton.SetActive(false);
