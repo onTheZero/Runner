@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomPosition : MonoBehaviour
+public class PlatformAnimation : MonoBehaviour
 {
     [SerializeField] private GameObject connectedFloor;
     [SerializeField] private Transform ikController;
@@ -12,9 +12,12 @@ public class RandomPosition : MonoBehaviour
 
     private Animator animator;
 
+    private AudioSource audioSource;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
 
         originalX = ikController.transform.localPosition.x;
         minX = originalX < 0 ? -12f : 0.0f;
@@ -43,6 +46,11 @@ public class RandomPosition : MonoBehaviour
     public void CycleFloorInactive()
     {
         connectedFloor.SetActive(false);
+    }
+
+    public void PlayAudio()
+    {
+        audioSource.Play();
     }
 
     IEnumerator MoveIK(float xOffset, float yOffset)
