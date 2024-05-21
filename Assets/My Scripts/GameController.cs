@@ -13,10 +13,10 @@ public class GameController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI pauseTMP;
     [SerializeField] private TextMeshProUGUI highScoreTMP;
 
+    [Header("UI Text")]
     [SerializeField] private GameObject startButton;
     [SerializeField] private GameObject pauseButton;
     [SerializeField] private GameObject restartButton;
-    [SerializeField] private AudioListener audioListener;
 
     [Header("Gameplay")]
     [SerializeField] private float killFloor;
@@ -119,19 +119,21 @@ public class GameController : MonoBehaviour
 
     public void MuteUnmute()
     {
-        if (audioListener.isActiveAndEnabled)
+        if (muteTMP.text == "MUTE")
         {
             PlayerPrefs.SetInt("muteSetting", 1);
 
             muteTMP.text = "UNMUTE";
-            audioListener.enabled = false;
+
+            AudioListener.volume = 0;
         }
         else
         {
             PlayerPrefs.SetInt("muteSetting", 0);
 
             muteTMP.text = "MUTE";
-            audioListener.enabled = true;
+
+            AudioListener.volume = 1;
         }
     }
 }
